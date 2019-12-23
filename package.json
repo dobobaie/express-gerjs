@@ -1,5 +1,5 @@
 {
-  "name": "koa-gerjs",
+  "name": "@gerjs/express",
   "version": "0.0.1",
   "description": "Use gerJs library plus use the models to validate and reformat the input/ouput payload in the API",
   "main": "lib/index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dobobaie/koa-gerjs.git"
+    "url": "git+https://github.com/dobobaie/express-gerjs.git"
   },
   "keywords": [
     "swagger",
@@ -16,15 +16,14 @@
     "openapi",
     "joi",
     "documentation",
-    "koa",
-    "koa2"
+    "express"
   ],
   "author": "dobobaie",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dobobaie/koa-gerjs/issues"
+    "url": "https://github.com/dobobaie/express-gerjs/issues"
   },
-  "homepage": "https://github.com/dobobaie/koa-gerjs#readme",
+  "homepage": "https://github.com/dobobaie/express-gerjs#readme",
   "dependencies": {
     "@gerjs/core": "git+ssh://git@github.com/dobobaie/gerjs.git#master"
   }

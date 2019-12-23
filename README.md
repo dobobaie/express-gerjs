@@ -1,10 +1,14 @@
-# [BETA] koa-gerJs
+# [BETA] express-gerJs
 Use gerJs library plus use the models to validate and reformat the input/ouput payload in the API.
+
+Example : [https://github.com/dobobaie/example-express-gerjs-server](https://github.com/dobobaie/example-express-gerjs-server)  
+
+Help us to improve the project by contributing 👥  
 
 ## ☁️ Installation
 
 ```
-$ npm install @gerjs/koa
+$ npm install @gerjs/express
 ```
 
 ## 📝 Usage
@@ -17,7 +21,7 @@ Create a new instance :
 
 ``` js
 const modelsAPI = require("./models/models");
-const gerJs = require("@gerjs/koa")({
+const gerJs = require("@gerjs/express")({
   // same @gerJs/core options | except `destinationPath` is not available
   exportTo: 'path/doc', // string ; required
 })(modelsAPI);
@@ -28,21 +32,19 @@ const gerJs = require("@gerjs/koa")({
 [`Joi`](https://hapi.dev/family/joi/) is required to create the models 
 
 ``` js
-const Koa = require("koa");
-const router = require("koa-router");
+const express = require("express");
+const router = require("express-router");
 
-const app = new Koa();
+const app = new express();
 
 // please use all the middlewares before
-app.use(gerJs.middleware(router)); // middleware to validate payload and reformat reponse (required)
+app.use(gerJs.middleware());
 
-app.use(
-	router
-	  // routes...
-	  .get("/swagger", gerJs.expose()) // expose the swagger documentation (not required)
-	  .get("*", ctx => ctx.throw(boom.notFound()))
-	  .routes()
-	);
+app.
+  // routes...
+  .get("/swagger", gerJs.expose()) // expose the swagger documentation (not required)
+  .get("*", (req, res, next) => next(boom.notFound()))
+;
 
 ```
 
