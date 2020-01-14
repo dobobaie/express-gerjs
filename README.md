@@ -8,28 +8,28 @@ Help us to improve the project by contributing 👥
 ## ☁️ Installation
 
 ```
-$ npm install @gerjs/express
+$ npm install gerjs-express
 ```
 
 ## 📝 Usage
 
-Use [@gerjs/core](https://github.com/dobobaie/gerJs) documentation to create `modelsAPI` file. 
+Use [gerjs-core](https://github.com/dobobaie/gerJs) documentation to create `modelsAPI` file. 
 
 ### Initialization
 
 Create a new instance :
+  
+Then create the models. [`Joi`](https://hapi.dev/family/joi/) is required. 
 
 ``` js
 const modelsAPI = require("./models/models");
-const gerJs = require("@gerjs/express")({
-  // same @gerJs/core options | except `destinationPath` is not available
-  exportTo: 'path/doc', // string ; required
+const gerJs = require("gerjs-express")({
+  // same gerjs-core options | except `destinationPath` is not available
+  exportTo: 'path/doc', // string ; optional
 })(modelsAPI);
 ```
 
-## ⚙️ Model examples
-
-[`Joi`](https://hapi.dev/family/joi/) is required to create the models 
+## ⚙️ GerJs initialization in Express side
 
 ``` js
 const express = require("express");
@@ -38,11 +38,11 @@ const router = require("express-router");
 const app = new express();
 
 // please use all the middlewares before
-app.use(gerJs.middleware());
+app.use(gerJs.middleware()); // middleware to validate payload and reformat reponse | required
 
 app.
   // routes...
-  .get("/swagger", gerJs.expose()) // expose the swagger documentation (not required)
+  .get("/swagger", gerJs.expose()) // expose the swagger documentation | optional
   .get("*", (req, res, next) => next(boom.notFound()))
 ;
 
@@ -51,3 +51,12 @@ app.
 ## 👥 Contributing
 
 Please help us to improve the project by contributing :)  
+
+## ❓️ Testing
+
+Clone the repo and run from the project root:
+
+```
+$ npm install
+$ npm test
+```
