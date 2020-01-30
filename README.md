@@ -33,7 +33,6 @@ const gerJs = require("gerjs-express")({
 
 ``` js
 const express = require("express");
-const router = require("express-router");
 
 const app = new express();
 
